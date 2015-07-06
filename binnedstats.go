@@ -7,7 +7,7 @@ package binnedstats
 // function mapped across an arbitrary partition of the data.  When
 // the statistic is just a count we have a histogram.
 type BinnedStats struct {
-	Bins []*Bin
+	Bins []*Bin `json:"bins"`
 }
 
 func (bs *BinnedStats) Counts() []int {
@@ -44,11 +44,11 @@ func (bs *BinnedStats) Widths() []float64 {
 
 // A Bin containing statistics computed over a cell of some partition.
 type Bin struct {
-	LeftEdge  float64
-	RightEdge float64
-	Width     float64
-	Count     int
-	Stat      float64
+	LeftEdge  float64 `json:"left_edge"`
+	RightEdge float64 `json:"right_edge"`
+	Width     float64 `json:"width"`
+	Count     int     `json:"count"`
+	Stat      float64 `json:"stat"`
 }
 
 // binnedStats computes the input statistic over each cell/bin of
